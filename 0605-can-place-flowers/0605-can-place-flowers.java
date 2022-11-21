@@ -1,6 +1,9 @@
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
+                if(n==0) return true;
                 if(flowerbed.length==1 && flowerbed[0]==0) return true;
+                if(flowerbed.length==1 && flowerbed[0]==1) return false;
+
  int i = 0;
         int canHold = 0;
         if(flowerbed[i] == 0){
@@ -19,7 +22,7 @@ class Solution {
         
         while(i < flowerbed.length){
             int j = i+1;
-            if(j == flowerbed.length) {break;}
+       //     if(j == flowerbed.length) {break;}
             while(j<flowerbed.length && flowerbed[j] != 1 ){
                 if(j == flowerbed.length-1 && flowerbed[j] == 0){
                     j++;
