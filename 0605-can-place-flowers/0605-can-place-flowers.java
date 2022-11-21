@@ -2,7 +2,7 @@ class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
                 if(n==0) return true;
                 if(flowerbed.length==1 && flowerbed[0]==0) return true;
-                if(flowerbed.length==1 && flowerbed[0]==1) return false;
+           //     if(flowerbed.length==1 && flowerbed[0]==1) return false;
 
  int i = 0;
         int canHold = 0;
