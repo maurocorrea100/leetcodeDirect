@@ -22,7 +22,7 @@ class Solution {
         
         while(i < flowerbed.length){
             int j = i+1;
-       //     if(j == flowerbed.length) {break;}
+            if(j == flowerbed.length) {break;}
             while(j<flowerbed.length && flowerbed[j] != 1 ){
                 if(j == flowerbed.length-1 && flowerbed[j] == 0){
                     j++;
