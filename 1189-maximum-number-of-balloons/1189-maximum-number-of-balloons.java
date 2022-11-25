@@ -18,6 +18,14 @@ class Solution {
             }
         }
         
-       return Arrays.asList(b,a,l/2,o/2,n).stream().min(Integer::compareTo).get();
+         l=l/2;
+        o=o/2;
+        int min = b;
+        min = Math.min(min, a);
+        min = Math.min(min, l);
+        min = Math.min(min, o);
+        min = Math.min(min, n);
+
+        return min;
     }
 }
