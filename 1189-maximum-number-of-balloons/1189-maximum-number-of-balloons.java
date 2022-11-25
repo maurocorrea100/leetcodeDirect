@@ -6,9 +6,7 @@ class Solution {
                 || !text.contains("n")){
             return 0;
         }
-
         Map<Character, Integer> map = new HashMap<>();
-
         for (int i = 0; i < text.length(); i++){
             boolean exists = text.charAt(i)=='b' || text.charAt(i)=='a' ||text.charAt(i)=='l' ||text.charAt(i)=='o' ||text.charAt(i)=='n';
 
@@ -20,12 +18,9 @@ class Solution {
                 }
             }
         }
-        
         map.put('l', map.get('l')/2);
         map.put('o', map.get('o')/2);
 
-        int minValue = map.values().stream().min(Integer::compare).get();
-
-        return minValue;
+        return map.values().stream().min(Integer::compare).get();
     }
 }
