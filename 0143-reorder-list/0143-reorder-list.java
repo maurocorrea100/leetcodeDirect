@@ -15,8 +15,6 @@ class Solution {
             slow = slow.next;
             fast = fast.next.next;
         }
-
-
     //    System.out.println("Slow value: " + slow.val);
 
         Stack<ListNode> st = new Stack<>();
