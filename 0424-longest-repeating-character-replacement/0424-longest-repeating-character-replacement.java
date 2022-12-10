@@ -7,7 +7,7 @@ class Solution {
         Map<Character,Integer> map = new HashMap<>();
         map.putIfAbsent(s.charAt(r),1);
         while(r<s.length()){
-        //    if(s.length()- l <= res) break;
+            if(s.length()- l <= res) break;
             max = Collections.max(map.values());
             if(r-l+1-max<=k){
                 res = Math.max(res,r-l+1);
