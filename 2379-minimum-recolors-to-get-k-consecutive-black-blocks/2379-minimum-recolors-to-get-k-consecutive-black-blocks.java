@@ -5,9 +5,11 @@ class Solution {
 
         int i=0, j=0;
         while(j<blocks.length()){
+          
            
             int length = j-i+1;
-            if(length <= k){
+          
+            if(j-i+1 <= k){
                 if(blocks.charAt(j) == 'B'){
                     numsB++;
                 }else{
@@ -22,10 +24,10 @@ class Solution {
                 }
                 i++;
             }
-
-            if(length == k){
+          if(length == k){
                  operationCount = Math.min(operationCount, numsW);
             }
+            
         }
         return operationCount;
     }
