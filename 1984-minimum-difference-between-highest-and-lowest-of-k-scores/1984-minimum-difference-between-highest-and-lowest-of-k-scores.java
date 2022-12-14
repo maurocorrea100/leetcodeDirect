@@ -1,23 +1,12 @@
 class Solution {
     public int minimumDifference(int[] nums, int k) {
+        if(nums.length ==1) return 0;
         Arrays.sort(nums);
+        int min=Integer.MAX_VALUE;
         
-        int start=0;
-        int end=k-1;
-        int OvrMin=Integer.MAX_VALUE;
-        
-        int N=nums.length;
-        
-        while(end<N)
-        {
-               int diff=nums[end]-nums[start];
-            
-               OvrMin=Math.min(OvrMin,diff);
-            
-                start++;
-                end++;
-        }//
-        
-        return OvrMin;
+        for(int i=0;i<=nums.length-k;i++){
+            min=Math.min(min,nums[i+k-1]-nums[i]);
+        }
+        return min;
     }
 }
