@@ -5,15 +5,17 @@ class Solution {
 
         int minimal = Integer.MAX_VALUE;
 
-        int start=0;
-        int sum =0;
-        for(int end = 0; end < nums.length; end++){
-            sum = sum + nums[end];
-            
-            while(sum>=target){
-                minimal = Math.min(minimal, end-start+1);
-                sum = sum - nums[start];
-                start++;
+        int l=0, r= 0;
+        int sum = nums[l];
+        while(l < nums.length && r< nums.length){
+            if(sum>=target){
+                minimal = Math.min(minimal,r-l+1);
+                sum = sum - nums[l];
+                l++;
+            }else if(sum < target){
+                r++;
+                if(r >= nums.length) break;
+                sum = sum + nums[r];
             }
         }
         return minimal == Integer.MAX_VALUE ? 0 : minimal;
