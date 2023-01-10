@@ -11,7 +11,7 @@ class Solution {
                 n++;
                 count++;
             }
-            res = Math.max(res,count);
+            res = res > count ? res : count;
         }
         return res;
     }
