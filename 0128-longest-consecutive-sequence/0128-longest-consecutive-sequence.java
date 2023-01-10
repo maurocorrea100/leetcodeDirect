@@ -11,7 +11,7 @@ class Solution {
                 n++;
                 count++;
             }
-            res = res > count ? res : count;
+            if(res<count) res = count;
         }
         return res;
     }
