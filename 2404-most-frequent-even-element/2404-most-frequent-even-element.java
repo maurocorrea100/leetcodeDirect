@@ -19,14 +19,14 @@ class Solution {
             max = Math.max(max,value);
         }
         
-        List<Integer> list = new ArrayList<>();
-        
+        int minNum = Integer.MAX_VALUE;
+     
         for(Map.Entry<Integer,Integer>entry: map.entrySet()){
-            if(entry.getValue()==max) list.add(entry.getKey());
+            if(entry.getValue()==max) {
+                minNum = Math.min(minNum, entry.getKey());
+            }
         }
         
-        Collections.sort(list);
-        
-        return list.get(0);
+        return minNum;
     }
 }
