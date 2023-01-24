@@ -23,35 +23,22 @@ class Solution {
         }
         int rem = count%k;
         double part = Math.ceil((double) count/(double) k);
-        
-        int numberOfPart = rem;
+        double numBigPartitions =rem;
         ListNode curr = head;
         int index = 0;
 
-        while (numberOfPart>0){
-            int counter = 1;
-            ListNode temp2 = curr;
-            while(counter < part){
-                temp2 = temp2.next;
-                counter++;
-            }
-
-            ListNode temp3 = temp2.next;
-            temp2.next = null;
-            arr[index] = curr;
-            index++;
-            curr = temp3;
-            numberOfPart--;
-        }
-
         while(index<arr.length){
             int counter = 1;
-            if(rem == 0) counter = 0;
+            part = Math.ceil((double) count/(double) k);
+          //  if(rem == 0) counter = 0;
             ListNode temp2 = curr;
+            part = numBigPartitions > 0 ? part + 1 : part;
+            if(rem==0) counter = 0;
             while(counter < part-1){
                 temp2 = temp2.next;
                 counter++;
             }
+            numBigPartitions--;
 
             if(null!=temp2){
                 ListNode temp3 = temp2.next;
