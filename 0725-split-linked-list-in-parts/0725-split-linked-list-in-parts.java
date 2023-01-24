@@ -30,7 +30,6 @@ class Solution {
         while(index<arr.length){
             int counter = 1;
             part = Math.ceil((double) count/(double) k);
-          //  if(rem == 0) counter = 0;
             ListNode temp2 = curr;
             part = numBigPartitions > 0 ? part + 1 : part;
             if(rem==0) counter = 0;
