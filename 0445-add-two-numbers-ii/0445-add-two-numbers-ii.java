@@ -10,53 +10,30 @@
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        Stack<ListNode> s1 = new Stack<>();
-        Stack<ListNode> s2 = new Stack<>();
-
-        ListNode temp = l1;
-        fillStack(s1, temp);
-
-        temp = l2;
-        fillStack(s2,temp);
-
-        int carry = 0, sum = 0;
-        Stack<ListNode> longSt = s1.size() >= s2.size() ? s1 : s2;
-        Stack<ListNode> shortSt = s1.size() < s2.size() ? s1 : s2;
-
-        ListNode head = null;
-        ListNode s = null;
-        while(!shortSt.isEmpty()){
-            head = longSt.pop();
-            s = shortSt.pop();
-            sum = head.val + s.val + carry;
-            carry = getCarry(sum, head);
+            Stack<Integer> s1 = new Stack<Integer>();
+        Stack<Integer> s2 = new Stack<Integer>();
+        
+        while(l1 != null) {
+            s1.push(l1.val);
+            l1 = l1.next;
+        };
+        while(l2 != null) {
+            s2.push(l2.val);
+            l2 = l2.next;
         }
-
-        while (!longSt.isEmpty()){
-            head = longSt.pop();
-            sum = head.val + carry;
-            carry = getCarry(sum, head);
+        
+        int sum = 0;
+        ListNode list = new ListNode(0);
+        while (!s1.empty() || !s2.empty()) {
+            if (!s1.empty()) sum += s1.pop();
+            if (!s2.empty()) sum += s2.pop();
+            list.val = sum % 10;
+            ListNode head = new ListNode(sum / 10);
+            head.next = list;
+            list = head;
+            sum /= 10;
         }
-
-        if(carry == 1){
-            temp = new ListNode(1);
-            temp.next = head;
-            head = temp;
-        }
-        return head;
-    }
-
-    private static int getCarry(int sum, ListNode head) {
-        int carry;
-        carry = sum > 9 ? 1 : 0;
-        head.val = sum % 10;
-        return carry;
-    }
-
-    private static void fillStack(Stack<ListNode> s1, ListNode temp) {
-        while(temp != null){
-            s1.push(temp);
-            temp = temp.next;
-        }
+        
+        return list.val == 0 ? list.next : list;
     }
 }
