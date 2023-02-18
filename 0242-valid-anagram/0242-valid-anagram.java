@@ -4,10 +4,6 @@ class Solution {
         if (s.length() != t.length())
             return false;
         
-        if(s.length() == 0 && t.length() == 0)
-            return true;
-        
-        
         int[] counter = new int[26];
         
         for(int i = 0; i < s.length(); i++){
