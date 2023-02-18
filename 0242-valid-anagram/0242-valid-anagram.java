@@ -8,48 +8,19 @@ class Solution {
             return true;
         
         
-       HashMap<Character,Integer> hmap = new HashMap<Character,Integer>();
+        int[] counter = new int[26];
         
         for(int i = 0; i < s.length(); i++){
-           
-            char current = s.charAt(i);
-            int value = 1;
-            
-            if(hmap.containsKey(current)){
-                value = hmap.get(current);
-                value++;
-            }
-          
-            hmap.put(current, value);
+            counter[s.charAt(i) - 'a']++;
+            counter[t.charAt(i) - 'a']--;
         }
         
-        for(int i = 0; i < t.length(); i++){
-            
-            char current = t.charAt(i);
-            int value = 0;
-            
-            if(hmap.containsKey(current)){
-                value = hmap.get(current);
-                value--;
-                if(value<0) return false;
-                hmap.put(current,value);
-            }
-            else
+        for(int element : counter){
+            if(element != 0)
                 return false;
         }
-        
-        for(Map.Entry<Character,Integer> entry : hmap.entrySet()) {
-           
-           // Character key = entry.getKey();
-            Integer value = entry.getValue();
-            
-            if(value != 0)
-                return false;
-
-        }
-        
-        return true;
        
+        return true;
     }
     
     
