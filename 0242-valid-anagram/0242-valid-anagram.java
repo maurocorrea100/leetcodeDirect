@@ -31,6 +31,7 @@ class Solution {
             if(hmap.containsKey(current)){
                 value = hmap.get(current);
                 value--;
+                if(value<0) return false;
                 hmap.put(current,value);
             }
             else
