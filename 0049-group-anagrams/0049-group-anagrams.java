@@ -1,21 +1,21 @@
 class Solution {
-    public List<List<String>> groupAnagrams(String[] strs) {
-        int mod = 1_000_000_007;
-
-        Map<Long, List<String>> map = new HashMap<>();
-
-        int[] primes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};
-
-        for (String s : strs) {
-            long key = 1L;
-            for (char ch : s.toCharArray()) {
-                key = key * primes[ch - 'a'] % mod;
+       public  List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+        for (String s: strs) {
+            int[] arr = new int[26];
+            for(int j = 0; j < s.length(); j++){
+                arr[s.charAt(j) - 'a']++;
             }
-
-            map.putIfAbsent(key, new ArrayList<>());
-            map.get(key).add(s);
+            String rep = Arrays.toString(arr);
+            if(map.containsKey(rep)){
+                map.get(rep).add(s);
+            }else{
+                map.put(rep,new ArrayList<>());
+                map.get(rep).add(s);
+            }
         }
+        List<List<String>> l = new ArrayList<>(map.values());
 
-        return new ArrayList<>(map.values());
-    }
+        return l;
+       }
 }
