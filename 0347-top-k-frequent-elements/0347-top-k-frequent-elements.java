@@ -1,42 +1,29 @@
 class Solution {
-    class MyObject implements Comparable<MyObject>{
-    public  Integer value;
-    public  Integer amount;
 
-    MyObject(int value, int amount){
-        this.value = value;
-        this.amount = amount;
-    }
-    @Override
-    public int compareTo(MyObject o) {
-        return this.amount.compareTo(o.amount);
-    }
-}
     
     public int[] topKFrequent(int[] nums, int k) {
-          Map<Integer,Integer> map = new HashMap<>();
+         	List<Integer>[] bucket = new List[nums.length + 1];
+	Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
 
-        for (int n : nums) {
-            if(map.containsKey(n)) map.put(n, map.get(n) + 1);
-            else map.put(n,1);
-        }
-        
-        PriorityQueue<MyObject> q = new PriorityQueue<>(k);
+	for (int n : nums) {
+		frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
+	}
 
-        for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
-            if(q.size()==k){
-                int val1 = q.peek().amount;
-                if(entry.getValue()>val1){
-                    q.poll();
-                    q.offer(new MyObject(entry.getKey(), entry.getValue()));
-                }
-            }else q.offer(new MyObject(entry.getKey(), entry.getValue()));
-        }
+	for (int key : frequencyMap.keySet()) {
+		int frequency = frequencyMap.get(key);
+		if (bucket[frequency] == null) {
+			bucket[frequency] = new ArrayList<>();
+		}
+		bucket[frequency].add(key);
+	}
 
-        int[] arr = new int[k];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = q.poll().value;
-        }
-        return arr;
+	List<Integer> res = new ArrayList<>();
+
+	for (int pos = bucket.length - 1; pos >= 0 && res.size() < k; pos--) {
+		if (bucket[pos] != null) {
+			res.addAll(bucket[pos]);
+		}
+	}
+	return res.stream().mapToInt(i->i).toArray();
     }
 }
