@@ -19,9 +19,10 @@ class Solution {
             }else queue.offer(Arrays.asList(entry.getKey(), entry.getValue()));
         }
 
-        List<Integer> list = new ArrayList<>();
-        queue.stream().forEach(a -> list.add(a.get(0)));
-    
-        return list.stream().mapToInt(i->i).toArray();
+        int[] arr = new int[k];
+        for (int i = 0; i < arr.length; i++){
+            arr[i] = queue.poll().get(0);
+        }
+        return arr;
     }
 }
