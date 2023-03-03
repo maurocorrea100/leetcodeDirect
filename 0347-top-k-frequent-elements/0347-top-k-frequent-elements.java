@@ -21,7 +21,7 @@ class Solution {
 
         List<Integer> list = new ArrayList<>();
         queue.stream().forEach(a -> list.add(a.get(0)));
-        System.out.println(queue);
+    
         return list.stream().mapToInt(i->i).toArray();
     }
 }
