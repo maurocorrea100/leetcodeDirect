@@ -1,9 +1,6 @@
 class Solution {
     public boolean isPalindrome(String s) {
         
-        if (s.isEmpty()) {
-        	return true;
-        }
         
         int L = 0, R = s.length()-1;
         s = s.toLowerCase();
