@@ -13,9 +13,10 @@ class Solution {
             timeArr[position[i]]= (double)(target - position[i]) / speed[i];
         }
         double prev = 0.0;
+        double cur;
         for (int i = max; i >=0 ; i--)
         {
-            double cur = timeArr[i];
+            cur = timeArr[i];
             if (cur > prev)
             {
                 prev = cur;
