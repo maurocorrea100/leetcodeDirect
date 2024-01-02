@@ -1,7 +1,7 @@
 class Solution {
     public List<List<Integer>> findMatrix(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
-       
+        Arrays.sort(nums);
         for(int i = 0; i < nums.length; i++){
             List<Integer> tempList = new ArrayList<>();
             boolean newRow = true;
