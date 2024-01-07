@@ -1,16 +1,18 @@
 class Solution {
     public int tribonacci(int n) {
-        int sum = 0;
-        if(n==0) return 0;
-        if(n<=2) return 1;
+       HashMap<Integer,Integer> map = new HashMap<>();
+        map.put(0,0);
+        map.put(1,1);
+        map.put(2,1);
+        return tribonacci(n, map);
+    }
+    
+    public int tribonacci(int n, HashMap<Integer,Integer> map) {
+      
+        if(map.containsKey(n)) return map.get(n);
         
-        int num1=0,num2=1,num3=1;
-        for(int i = 3; i <= n; i++){
-            sum = num1+num2+num3;
-            num1 = num2;
-            num2 = num3;
-            num3 = sum;
-        }
-        return sum;
+        int res = tribonacci(n-1,map) + tribonacci(n-2,map) + tribonacci(n-3,map);
+        map.put(n,res);
+        return res;
     }
 }
