@@ -1,14 +1,17 @@
 class Solution {
     public int fib(int n) {
+        return fib(n, new HashMap<>());
+    }
+    
+    public int fib(int n, HashMap<Integer,Integer> memo) {
         if(n==0) return 0;
         if(n<=2) return 1;
-        int sum = 0;
-        int num1 = 1, num2 = 1;
-        for(int i = 3; i <= n; i++){
-            sum = num1 + num2;
-            num1 = num2;
-            num2 = sum;
-        }
-        return sum;
+        
+        if(memo.containsKey(n)) return memo.get(n);
+        
+        int res = fib(n-1, memo) + fib(n-2,memo);
+        memo.put(n, res);
+        
+        return res;
     }
 }
