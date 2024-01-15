@@ -21,8 +21,8 @@ class Solution {
         }
 
        
-        res.add(winners.stream().toList());
-        res.add(loosers1.stream().toList());
+       res.add(new ArrayList<>(winners));
+        res.add(new ArrayList<>(loosers1));
         return res;
 
     }
