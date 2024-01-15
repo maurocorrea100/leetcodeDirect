@@ -1,7 +1,7 @@
 class Solution {
     public List<List<Integer>> findWinners(int[][] matches) {
-            Set<Integer> winners = new TreeSet<>();
-        Set<Integer> loosers1 = new TreeSet<>();
+        List<Integer> winners = new ArrayList<>();
+        List<Integer> loosers1 = new ArrayList<>();
         List<List<Integer>> res = new ArrayList<>();
 
         HashMap<Integer, Integer> winnersMap = new HashMap<>();
@@ -15,16 +15,17 @@ class Solution {
             else losersMap.put(pair[1],1);
         }
 
-        for (var entry : winnersMap.entrySet()) 
+        for (var entry : winnersMap.entrySet())
             if (!losersMap.containsKey(entry.getKey())) winners.add(entry.getKey());
-        
 
-        for (var entry : losersMap.entrySet()) 
+
+        for (var entry : losersMap.entrySet())
             if(entry.getValue()==1) loosers1.add(entry.getKey());
-        
 
-        res.add((winners.stream().toList()));
-        res.add((loosers1.stream().toList()));
+        Collections.sort(winners);
+        Collections.sort(loosers1);
+        res.add(winners);
+        res.add(loosers1);
         return res;
     }
 }
