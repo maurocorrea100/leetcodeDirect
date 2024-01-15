@@ -23,8 +23,8 @@ class Solution {
             if(entry.getValue()==1) loosers1.add(entry.getKey());
         
 
-        res.add(new ArrayList<>(winners));
-        res.add(new ArrayList<>(loosers1));
+        res.add((winners.stream().toList()));
+        res.add((loosers1.stream().toList()));
         return res;
     }
 }
