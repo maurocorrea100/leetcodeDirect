@@ -20,12 +20,12 @@ class RandomizedSet {
     public boolean remove(int val) {
         if(locs.containsKey(val)){
             int loc = locs.get(val);
-            if(loc < nums.size()-1){
+          
                 int lastone = nums.get(nums.size()-1);
                 nums.set(loc,lastone);
                 locs.put(lastone,loc);
               
-            }
+            
             locs.remove(val);
              nums.remove(nums.size()-1); 
             return true;
