@@ -1,16 +1,16 @@
 class Solution {
     public int climbStairs(int n) {
-        int steps = n-1;
-        int one = 1;
-        int two = 1;
-
-        while(steps>0){
-            int temp = one + two;
-            two = one;
-            one = temp;
-            steps--;
+        if(n==1) return 1;
+        if(n==2) return 2;
+        int one = 1, two = 2;
+        int sum = 0;
+        for(int i = 3; i <= n; i++){
+            sum = one + two;
+            one = two;
+            two = sum;
         }
-
-        return one;
+        return sum;
     }
+    
+    
 }
