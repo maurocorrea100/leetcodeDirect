@@ -1,27 +1,23 @@
 class Solution {
     public String frequencySort(String s) {
-                HashMap<Character,Integer> map = new HashMap<>();
-        for(int i = 0; i < s.length();i++){
-            if(map.putIfAbsent(s.charAt(i),1)!=null) map.put(s.charAt(i),map.get(s.charAt(i))+1);
-        }
-
-        Map<Integer,ArrayList<Character>> res = new TreeMap<>(Collections.reverseOrder());
-        for(Map.Entry<Character,Integer> entry : map.entrySet()){
-            if(res.putIfAbsent(entry.getValue(),new ArrayList<>(Arrays.asList(entry.getKey())))!=null)
-                res.get(entry.getValue()).add(entry.getKey());
-        }
-
-        StringBuilder ans = new StringBuilder();
-        for(Map.Entry<Integer, ArrayList<Character>> entry :res.entrySet()){
-            int key = entry.getKey();
-            for(Character el : entry.getValue()){
-                int i = 1;
-                while(i<=key) {
-                    ans.append(el);
-                    i++;
+    int[] count = new int[256];
+    StringBuilder sb = new StringBuilder();
+    List<List<Integer>> list = new ArrayList<>();
+    
+    for (int i = 0; i < s.length(); i++) count[s.charAt(i)]++;
+    for (int i = 0; i < s.length()+1; i++) list.add(new ArrayList<Integer>());
+    for (int i = 0; i < count.length; i++) if (count[i] != 0) list.get(count[i]).add(i);
+            
+    for (int i = list.size()-1; i >= 0; i--){
+        if (list.get(i) != null){
+            List<Integer> temp = list.get(i);
+            for(int k = 0; k < temp.size(); k++){
+                for (int m = 0; m < i; m++){
+                    sb.append(Character.toChars(temp.get(k)));
                 }
             }
         }
-        return ans.toString();
+    }
+    return sb.toString();
     }
 }
