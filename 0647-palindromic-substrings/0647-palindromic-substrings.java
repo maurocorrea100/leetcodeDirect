@@ -1,21 +1,21 @@
 class Solution {
-   public int countSubstrings(String s) {
-        int res = s.length();
-        for(int i = 0; i< s.length();i++){
-            for(int j = i+1; j < s.length(); j++){
-                String temp = s.substring(i,j+1);
-                if(isPali(temp)) res++;
-            }
+   public int countSubstrings(String str) {
+      if(str == null || str.length() < 1) return 0;
+        int count = 0;
+        for(int i=0;i<str.length();i++){
+            count += countPalindromes(str, i, i); //Count even sized
+            count += countPalindromes(str, i, i+1); //Count odd sized
         }
-        return res;
+        return count;
     }
-
-    private boolean isPali(String temp) {
-        int l = 0, r = temp.length()-1;
-        while(l<r){
-            if(temp.charAt(l)!=temp.charAt(r)) return false;
-            l++;r--;
+    
+    private int countPalindromes(String str, int s, int e){
+        int count = 0;
+        while(s>=0 && e<str.length() && str.charAt(s) == str.charAt(e)){
+            s--;
+            e++;
+            count++;
         }
-        return true;
+        return count;
     }
 }
