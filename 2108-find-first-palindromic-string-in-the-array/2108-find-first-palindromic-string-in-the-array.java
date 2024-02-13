@@ -1,7 +1,7 @@
 class Solution {
     public String firstPalindrome(String[] words) {
          for(String el : words) {
-            if(el.length()==1) return el;
+          
             int l=0, r = el.length()-1;
             boolean isPoly = true;
             while(l<r){
