@@ -6,10 +6,11 @@ class Solution {
         int judge = 0;
         for(int[] el:trust){
             // [1,2]
-            map.put(el[1],map.getOrDefault(el[1],0)+1);
-            if(map.get(el[1]) > max){
-                max = map.get(el[1]);
-                judge = el[1];
+            int key = el[1];
+            map.put(key,map.getOrDefault(key,0)+1);
+            if(map.get(key) > max){
+                max = map.get(key);
+                judge = key;
             }
         }
         
