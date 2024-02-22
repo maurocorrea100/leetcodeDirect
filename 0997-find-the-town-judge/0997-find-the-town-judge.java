@@ -12,6 +12,7 @@ class Solution {
                 max = map.get(key);
                 judge = key;
             }
+            
         }
         
          for(int[] el : trust) {
