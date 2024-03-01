@@ -15,24 +15,24 @@
  */
 class Solution {
    public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
-        Map<Integer, List<Integer>> map = new TreeMap<>();
-        levelOrder(root,0,map);
-        
-        for(List<Integer> el : map.values()){
-            res.add(el);
+    List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+       
+        if(root != null ) queue.add(root);
+
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> list = new ArrayList<>();
+            while(size>0){
+                TreeNode node = queue.poll();
+                list.add(node.val);
+                if(node.left != null) queue.add(node.left);
+                if(node.right != null) queue.add(node.right);
+                size--;
+            }
+            res.add(list);
         }
-        
+
         return res;
-    }
-
-    public void levelOrder(TreeNode root, int index,  Map<Integer, List<Integer>> map ) {
-        if(root == null ) return;
-
-        if(map.containsKey(index)) map.get(index).add(root.val);
-        else map.put(index, new ArrayList<>(Arrays.asList(root.val)));
-        index++;
-        levelOrder(root.left,index,map);
-        levelOrder(root.right,index,map);
-    }
+   }
 }
