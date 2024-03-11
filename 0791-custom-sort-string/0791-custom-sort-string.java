@@ -1,25 +1,20 @@
 class Solution {
-    public String customSortString(String order, String s) {
-               StringBuilder str = new StringBuilder();
-        Map<Character,Integer> map = new HashMap<>();
-        for(int i = 0; i< s.length(); i++) {
-            if(!map.containsKey(s.charAt(i))) map.put(s.charAt(i),1);
-            else map.put(s.charAt(i),map.get(s.charAt(i))+1);
+    public String customSortString(String S, String T) {
+           int[] count = new int[26];
+        for (char c : T.toCharArray()) { 
+            ++count[c - 'a'];  // count each char in T. 
         }
-
-        for(int i = 0; i < order.length(); i++){
-            if(map.get(order.charAt(i))!=null) {
-                int amount = map.get(order.charAt(i));
-                while (amount-- > 0) str.append(order.charAt(i));
-                map.remove(order.charAt(i));
+        StringBuilder sb = new StringBuilder();
+        for (char c : S.toCharArray()) {                            
+            while (count[c - 'a']-- > 0) { 
+                sb.append(c);  // sort chars both in T and S by the order of S.; 
+            }  
+        }
+        for (char c = 'a'; c <= 'z'; ++c) {
+            while (count[c - 'a']-- > 0) { 
+                sb.append(c); //chars in T but not in S.
             }
         }
-
-        for(Map.Entry<Character,Integer> pair : map.entrySet()){
-            int size = pair.getValue();
-            while(size-->0)str.append(pair.getKey());   
-        }
-
-        return str.toString();
+        return sb.toString();
     }
 }
