@@ -1,9 +1,8 @@
 class Solution {
     public int pivotInteger(int n) {
-        if(n==8) return 6;
-        if(n==1) return 1;
-        if(n==49) return 35;
-        if(n==288) return 204;
-        return -1;
+        int ans = (n * n + n ) /2;
+        int sq = (int)Math.sqrt(ans);
+        if(sq * sq == ans)return sq;
+        else return -1;
     }
 }
