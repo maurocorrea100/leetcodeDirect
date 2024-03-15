@@ -1,24 +1,21 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        int multi  = 1;
-        boolean hasZero = false;
-        int amountZero = 0;
-        for(int el : nums){
-            if(el==0) {
-                hasZero = true;
-                amountZero++;
-            }
-            else multi *= el;
+        int n = nums.length;
+        int[] res = new int[n];
+        // Calculate lefts and store in res.
+        int left = 1;
+        for (int i = 0; i < n; i++) {
+            if (i > 0)
+                left = left * nums[i - 1];
+            res[i] = left;
         }
-        
-        for(int i = 0; i < nums.length; i++){
-            if(hasZero && amountZero > 1){
-                nums[i] = 0;
-            }else if(hasZero && amountZero == 1){
-                if(nums[i]==0) nums[i] = multi;
-                else nums[i] = 0;
-            }else nums[i] = multi/nums[i];
+        // Calculate rights and the product from the end of the array.
+        int right = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            if (i < n - 1)
+                right = right * nums[i + 1];
+            res[i] *= right;
         }
-        return nums;
+        return res;
     }
 }
