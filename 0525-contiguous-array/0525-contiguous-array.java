@@ -1,6 +1,6 @@
 class Solution {
     public int findMaxLength(int[] nums) {
-        int res = 0;
+         int res = 0;
         Map<Integer,Integer> map = new HashMap<>();
         int prefixSum = 0;
         for (int i = 0; i< nums.length; i++) nums[i] = nums[i] == 0 ? -1 : 1;
