@@ -9,7 +9,7 @@ class Solution {
             if(prefixSum==0) {
                 if(res < i + 1) res = i+1;
             }
-            if(!map.containsKey(prefixSum)){
+            else if(!map.containsKey(prefixSum)){
                 map.put(prefixSum,i);
             }
             if(map.containsKey(prefixSum)){
