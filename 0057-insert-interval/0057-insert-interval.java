@@ -1,38 +1,62 @@
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-    ArrayList<int[]> smaller = new ArrayList<>();
-        ArrayList<int[]> overlap = new ArrayList<>();
-        ArrayList<int[]> larger = new ArrayList<>();
-        for (int i = 0; i < intervals.length; i++) {
-            int[] interval = intervals[i];
-            if (interval[1] < newInterval[0]) {
-                smaller.add(interval);
-            } else if (interval[0] > newInterval[1]) {
-                larger.add(interval);
-            } else {
-                overlap.add(interval);
-            }
-        }
+       ArrayList<int[]> list = new ArrayList<>();
+    
+       int num1 = -1, num2 = -1;
+       boolean found1 = false, found2 = false;
 
-        if (overlap.size() > 0) {
-            int[] firstInOverlap = overlap.get(0);
-            int[] lastInOverlap = overlap.get(overlap.size() - 1);
-            newInterval[0] = Math.min(firstInOverlap[0], newInterval[0]);
-            newInterval[1] = Math.max(lastInOverlap[1], newInterval[1]);
-        }
+       for(int[] el : intervals){
 
-        int[][] results = new int[smaller.size() + 1 + larger.size()][];
-        int index = 0;
-        for (int[] interval : smaller) {
-            results[index++] = interval;
-        }
+           if(num1 < 0 && newInterval[0]<= el[0]) {
+               num1 = newInterval[0];
+               found1 = true;
+           }
 
-        results[index++] = newInterval;
+           if(!found1 && !found2){
+               if(newInterval[0] >= el[0] && newInterval[0] <= el[1]){
+                   found1 = true;
+                   num1 = el[0];
+               }
 
-        for (int[] interval : larger) {
-            results[index++] = interval;
-        }
+               if(newInterval[1]>= el[0] && newInterval[1] <= el[1]){
+                   found2 = true;
+                   num2 = el[1];
+               }
 
-        return results;
+               if(found1 && found2) list.add(new int[]{num1,num2});
+               else if(!found1 && !found2) list.add(el);
+               else if(!found1 && found2){
+                   list.add(new int[]{newInterval[0],num2});
+
+               }
+
+
+           }else if(found1 && !found2){
+               if(newInterval[1] < el[0]) {
+                   found2 = true;
+                   num2 = newInterval[1];
+                   list.add(new int[]{num1,num2});
+                   list.add(el);
+               }
+               if(newInterval[1]>= el[0] && newInterval[1] <= el[1]){
+                   found2 = true;
+                   num2 = el[1];
+                   list.add(new int[]{num1,num2});
+               }
+           }
+           else list.add(el);
+       }
+
+       if(!found1 && !found2) list.add(newInterval);
+       else if(found1 && !found2) list.add(new int[]{num1,newInterval[1]});
+
+     //  for (int[] el : list) System.out.println(Arrays.toString(el));
+       int[][] res = new int[list.size()][2];
+       int i = 0;
+       for(int[] el : list){
+           res[i] = el;
+           i++;
+       }
+        return res;
     }
 }
