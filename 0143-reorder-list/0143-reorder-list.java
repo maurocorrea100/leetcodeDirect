@@ -10,41 +10,42 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-                    ListNode slow = head, fast = head;
-        while(fast != null && fast.next != null  ){
+        if(head.next==null) return ;
+ ListNode fast = head;
+        ListNode slow = head;
+        ListNode mostLeft = null;
+        while(fast.next != null){
+            fast = fast.next;
+            if(fast.next == null){
+                break;
+            }
+            fast = fast.next;
             slow = slow.next;
-            fast = fast.next.next;
         }
-
-
-//        System.out.println("Slow value: " + slow.val);
-
-        ListNode temp = slow;
-        slow = slow.next;
-        temp.next = null;
-
-        ListNode prev = null;
-        //reverse linked list
-        while(slow != null){
-            ListNode node = slow;
-            slow = slow.next;
-            node.next = prev;
-            prev = node;
+        
+        ListNode curr = slow.next;
+        slow.next = null;
+        
+        ListNode left = null;
+        ListNode right = curr.next;
+        while(curr !=null){
+            curr.next = left;
+            left = curr; 
+            curr = right;
+            if(curr == null) break;
+            right = right.next;
         }
-
-        ListNode head2 = prev;
-        ListNode curr2 = head2;
-        ListNode prev2 = head2;
-        ListNode curr1 = head;
-        ListNode prev1 = head;
-        while(curr2 != null){
-            curr1 = curr1.next;
-            curr2 = curr2.next;
-            prev2.next = null;
-            prev1.next = prev2;
-            prev2.next = curr1;
-            prev1 = curr1;
-            prev2 = curr2;
+        
+        ListNode f1 = head, f2 = head.next;
+        ListNode s1 = left, s2 = left.next;
+        
+        while(f1 != null && s1 != null){
+           f1.next = s1;
+            s1.next = f2;
+         f1 = f2;
+         s1 = s2;
+         if(f2 != null) f2 = f2.next;
+         if(s2 != null) s2 = s2.next; 
         }
         
         
