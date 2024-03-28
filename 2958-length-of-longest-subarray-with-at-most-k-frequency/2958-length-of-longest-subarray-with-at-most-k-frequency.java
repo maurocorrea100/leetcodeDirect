@@ -7,7 +7,7 @@ class Solution {
         freq.put(nums[j], freq.getOrDefault(nums[j], 0) + 1);
         while(freq.get(nums[j]) > k){
             freq.put(nums[i], freq.get(nums[i]) - 1);
-            ++i;
+            i++;
         }
         ans = Math.max(ans, j - i + 1);
     }
