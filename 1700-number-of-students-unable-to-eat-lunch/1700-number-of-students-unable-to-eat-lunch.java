@@ -1,7 +1,6 @@
 class Solution {
     public int countStudents(int[] students, int[] sandwiches) {
-       // We create a stack and the queue to simulate the serving process
-        Stack<Integer> sandwichStack = new Stack<>();
+         Stack<Integer> sandwichStack = new Stack<>();
         Queue<Integer> studentQueue = new LinkedList<>();
         // populate the stack and the queue
         for (int i = 0; i < students.length; i++) {
@@ -29,6 +28,5 @@ class Solution {
         }
 
         return couldntServe;    // return the number of unserved students
-        
-    }
+}
 }
