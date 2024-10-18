@@ -10,7 +10,7 @@ class Solution {
         // go thru els of num2 and check if:
         // el exists in map and its val>0 -> add el to res and reduce val by -1
         for(int el : nums2){
-            if(map.containsKey(el) && map.get(el)>0){
+            if(map.containsKey(el) && map.get(el)>0 ){
                 list.add(el);
                 map.put(el,map.get(el)-1);
             }
