@@ -1,23 +1,21 @@
 class Solution {
-    public String makeFancyString(String s) {
-        int size = s.length();
-        if(size < 3) return s;
-        char[] chars = s.toCharArray();
-
-
-        char fist = chars[0];
-        char second = chars[1];
-
-        int end = 2;
-
-        for(int i = 2; i < size; i++) {
-            if(fist == second && second == chars[i]) {
-                continue;
+ public String makeFancyString(String s) {
+        byte[] sc = s.getBytes();
+        int inpIdx = 1;
+        int outIdx = 1;
+        int prevChar = sc[0];
+        int dupCount = 0;
+        int len = sc.length;
+        while (inpIdx < len) {
+            int c = sc[inpIdx++];
+            if (c != prevChar) {
+                prevChar = c;
+                sc[outIdx++] = (byte)c;
+                dupCount = 0;
+            } else {
+                if (++dupCount < 2)  sc[outIdx++] = (byte)c;
             }
-            fist = second;
-            second = chars[i];
-            chars[end++] = chars[i];
         }
-        return String.copyValueOf(chars, 0, end);
+        return new String(sc, 0, outIdx);
     }
 }
