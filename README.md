@@ -8,6 +8,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [1063-best-sightseeing-pair](https://github.com/ahmet422/leetcodeDirect/tree/master/1063-best-sightseeing-pair) |
 | [1524-string-matching-in-an-array](https://github.com/ahmet422/leetcodeDirect/tree/master/1524-string-matching-in-an-array) |
+| [2292-counting-words-with-a-given-prefix](https://github.com/ahmet422/leetcodeDirect/tree/master/2292-counting-words-with-a-given-prefix) |
 | [2691-count-vowel-strings-in-ranges](https://github.com/ahmet422/leetcodeDirect/tree/master/2691-count-vowel-strings-in-ranges) |
 ## Dynamic Programming
 |  |
@@ -18,6 +19,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [1524-string-matching-in-an-array](https://github.com/ahmet422/leetcodeDirect/tree/master/1524-string-matching-in-an-array) |
 | [1537-maximum-score-after-splitting-a-string](https://github.com/ahmet422/leetcodeDirect/tree/master/1537-maximum-score-after-splitting-a-string) |
+| [2292-counting-words-with-a-given-prefix](https://github.com/ahmet422/leetcodeDirect/tree/master/2292-counting-words-with-a-given-prefix) |
 | [2691-count-vowel-strings-in-ranges](https://github.com/ahmet422/leetcodeDirect/tree/master/2691-count-vowel-strings-in-ranges) |
 ## Prefix Sum
 |  |
@@ -28,4 +30,5 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1524-string-matching-in-an-array](https://github.com/ahmet422/leetcodeDirect/tree/master/1524-string-matching-in-an-array) |
+| [2292-counting-words-with-a-given-prefix](https://github.com/ahmet422/leetcodeDirect/tree/master/2292-counting-words-with-a-given-prefix) |
 <!---LeetCode Topics End-->
