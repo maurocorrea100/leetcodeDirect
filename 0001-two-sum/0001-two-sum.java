@@ -11,6 +11,7 @@ class Solution {
             }else{
                 map.put(nums[i], i);                
             }
+            System.out.println("hey");
         }
         return indexes;
     }
